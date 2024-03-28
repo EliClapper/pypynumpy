@@ -1,6 +1,6 @@
 FROM pypy:3.9
 
-# install dev-tools to build scipy and scikit-learn
+# install dev-tools to build numpy
 RUN apt-get -y update \
  && apt-get install -y -qq --no-install-recommends \
     gfortran \
@@ -13,7 +13,7 @@ RUN apt-get -y update \
 
 RUN pypy3 -m pip install --upgrade pip  
 
-# install requirements (scipy and scikit)
+# install requirements (only numpy)
 COPY requirements.txt ./
 RUN pypy3 -m pip install -r requirements.txt --no-cache
 
